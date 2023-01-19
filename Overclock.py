@@ -6,7 +6,7 @@ def start():
     print(graphics.Rever)
     time.sleep(2)
     try:
-        print(configdisplay())
+        configdisplay()
         time.sleep(5)
         Menu()
     except:
@@ -21,7 +21,7 @@ def Menu():
     choice = input(" user: ")
     if choice == "1":
         os.system('cls')
-        print(configdisplay())
+        configdisplay()
         input(" Press enter to continue")
         Menu()
     elif choice == "2":
@@ -83,7 +83,7 @@ def configdisplay():
         print("\n Ryzen ADJI, ", data["RyzenADJI"])
         print("\n USB devices", data["USBdevices"])
         print(" Total usb power", data["TotalUSBPower"])
-        return graphics.Rever
+        print(graphics.Rever)
 
 def existstage1():
     os.system('cls')
