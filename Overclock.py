@@ -18,19 +18,16 @@ def Menu():
     os.system('cls')
     print(graphics.Menu)
     print(" 1. View current configuration \n 2. Edit configuration \n 3. exit program")
-    a = input(" user: ")
-    if a == "1":
+    choice = input(" user: ")
+    if choice == "1":
         os.system('cls')
-        print(configdisplay(), "\n \n press any key to continue")
-        B = input(" user:")
-        if B == "":
-            Menu()
-        else: 
-            Menu()
-    elif a == "2":
+        print(configdisplay())
+        input(" Press enter to continue")
+        Menu()
+    elif choice == "2":
         os.system('cls')
         editor()
-    elif a == "3":
+    elif choice == "3":
         existstage1()
     else: 
         Menu()
@@ -87,7 +84,6 @@ def configdisplay():
         print("\n USB devices", data["USBdevices"])
         print(" Total usb power", data["TotalUSBPower"])
         return graphics.Rever
-
 
 def existstage1():
     os.system('cls')
