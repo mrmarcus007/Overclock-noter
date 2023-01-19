@@ -1,7 +1,10 @@
 import pyfiglet
 
+def ascii_art(text):
+    return pyfiglet.figlet_format(text)
+
 Rever = " \n Overclock Manager, Version: 1.2.15"
-Overclock = pyfiglet.figlet_format("Overclock Manager")
-Menu = pyfiglet.figlet_format("Menu")
-Warning = pyfiglet.figlet_format("Warning")
-Bye = pyfiglet.figlet_format("Goodbye")
+Overclock = ascii_art("Overclock Manager")
+Menu = ascii_art("Menu")
+Warning = ascii_art("Warning")
+Bye = ascii_art("Goodbye")
