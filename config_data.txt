@@ -17,3 +17,5 @@
  Static USB devices: 4
  Total USB power: 18.0W
  Total Power: 134.0W
+ 
+ Overclock Manager, Version: 2.0.1

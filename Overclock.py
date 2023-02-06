@@ -50,7 +50,7 @@ def editor():
     RyzenADJI = input("Ryzen ADJI preset (if you have one, if not leave blank): ")
     USBdevices = int(input("Amount of static USB devices: " ))
     TotalUSBpower = USBdevices * 4.5
-    TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.32)
+    TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
     data = {
     "PCname": my_system.node,
     "System": f"{my_system.system} {my_system.version}",
@@ -109,6 +109,7 @@ def export():
             file.write("\n Static USB devices: " + str(data["USBdevices"]) + "\n")
             file.write(" Total USB power: " + str(data["TotalUSBPower"]) + "W" + "\n")
             file.write(" Total Power: " + str(data["TotalPower"]) + "W" + "\n")
+            file.write(" \n Overclock Manager, Version: 2.0.1")
     print(" Data exported to config")
     input(" Press enter to continue")
     Menu()
@@ -126,15 +127,23 @@ def existstage1():
         existstage1()
 
 def exitstage2():
-    t = 5
+    t = 10
     while t > 0:
-        os.system('cls')
-        print(graphics.Bye)
-        print(graphics.Rever, ", By Marcus Allison" )
-        print("\n Closing program in", t)
-        time.sleep(1)
-        t = t - 1
-        if t == 1:
+        if t >= 5:
+            os.system('cls')
+            print(graphics.Overclock)
+            print(graphics.Rever, ", By Marcus Allison" )
+            print("\n Closing program in", t)
+            time.sleep(1)
+            t = t - 1
+        elif t <= 5:
+            os.system('cls')
+            print(graphics.Bye)
+            print(graphics.Rever, ", By Marcus Allison" )
+            print("\n Closing program in", t)
+            time.sleep(1)
+            t = t - 1
+        elif t == 1:
             os.system('cls')
             print(graphics.Bye)
             print(graphics.Rever, ", By Marcus Allison" )
