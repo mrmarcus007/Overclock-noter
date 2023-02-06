@@ -136,6 +136,12 @@ def exitstage2():
             print("\n Closing program in", t)
             time.sleep(1)
             t = t - 1
+        elif t == 1:
+            os.system('cls')
+            print(graphics.Bye)
+            print(graphics.Rever, ", By Marcus Allison" )
+            print("\n Terminated program")
+            os._exit(1)
         elif t <= 5:
             os.system('cls')
             print(graphics.Bye)
@@ -143,11 +149,5 @@ def exitstage2():
             print("\n Closing program in", t)
             time.sleep(1)
             t = t - 1
-        elif t == 1:
-            os.system('cls')
-            print(graphics.Bye)
-            print(graphics.Rever, ", By Marcus Allison" )
-            print("\n Terminated program")
-            os._exit(1)
-    
+
 start()
