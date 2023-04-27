@@ -1,22 +1,57 @@
 import graphics, time, os, platform, json
 
+System = ()
+PCname = ()
+CPUPowerLimit = ()
+CPUClock = ()
+Processor = ()
+Gprocessor = ()
+GPUpowerLimit = ()
+GPUClock = ()
+GPUMemoryClock = ()
+BusClock = ()
+RyzenADJI = ()
+USBdevices = ()
+TotalUSBpower = ()
+TotalPower = ()
+
 def start():
     os.system('cls')
     print(graphics.Overclock)
     print(graphics.Rever)
     time.sleep(2)
     try:
+        load()
         configdisplay()
-        time.sleep(5)
+        input("press any key to go to the menu")
         Menu()
     except:
         print("This is first time setup, please wait...")
         time.sleep(5)
         editor()
 
+def load():
+    global System, PCname, CPUPowerLimit, CPUClock, Processor, Gprocessor, GPUpowerLimit, GPUClock, GPUMemoryClock, BusClock, RyzenADJI, USBdevices, TotalUSBpower, TotalPower
+    with open("Configuationtable.json", "r") as file:
+        data = json.loads(file.read())
+        System = (data["System"])
+        PCname = (data["PCname"])
+        CPUPowerLimit = (data["CPUPowerLimit"])
+        CPUClock = (data["CPUClock"])
+        Processor = (data["Processor"])
+        Gprocessor = (data["Gprocessor"])
+        GPUpowerLimit = (data["GPUpowerLimit"])
+        GPUClock = (data["GPUClock"])
+        GPUMemoryClock = (data["GPUMemoryclock"])
+        BusClock = (data["BusClock"])
+        RyzenADJI = (data["RyzenADJI"])
+        USBdevices = (data["USBdevices"])
+        TotalUSBpower = (data["TotalUSBPower"])
+        TotalPower = (data["TotalPower"])
+
 def Menu():
     os.system('cls')
-    print(graphics.Menu)
+    print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
     print(" 1. View current configuration \n 2. Edit configuration \n 3. export configuration \n 4. exit program")
     choice = input(" user: ")
     if choice == "1":
@@ -69,26 +104,27 @@ def editor():
     }
     with open("Configuationtable.json", "w") as file:
         file.write(json.dumps(data))
+    load()
     Menu()
 
 def configdisplay():
-    with open("Configuationtable.json", "r") as file:
-        data = json.loads(file.read())
-        print("="*40, "last Saved Configuation/System Information", "="*40, "\n")
-        print(" System: ", data["System"])
-        print(" PC Name: ", data["PCname"])
-        print("\n Processor: ", data["Processor"])
-        print(" Processor Power Limit: ", data["CPUPowerLimit"], "W")
-        print(" Processor clock: ", data["CPUClock"], "Ghz")
-        print(" Bus clock: ", data["BusClock"], "Mhz")
-        print("\n GPU: ", data["Gprocessor"])
-        print(" GPU Power Limit: ", data["GPUpowerLimit"], "W")
-        print(" GPU Clock: ", data["GPUClock"], "Mhz")
-        print("\n Ryzen ADJI, ", data["RyzenADJI"])
-        print("\n Static USB devices:", data["USBdevices"])
-        print(" Total USB power: ", data["TotalUSBPower"])
-        print("\n Totalpower: ", data["TotalPower"])
-        print(graphics.Rever)
+    os.system("cls")
+    print("="*5, "last Saved Configuation/System Information", "="*5, "\n")
+    print(" System: ", System)
+    print(" PC Name: ", PCname)
+    print("\n Processor: ", Processor)
+    print(" Processor Power Limit: ", CPUPowerLimit, "W")
+    print(" Processor clock: ", CPUClock, "Ghz")
+    print(" Bus clock: ", BusClock, "Mhz")
+    print("\n GPU: ", Gprocessor)
+    print(" GPU Power Limit: ", GPUpowerLimit, "W")
+    print(" GPU Clock: ", GPUClock, "Mhz")
+    print(" GPU memory clock: ", GPUMemoryClock, "Mhz")
+    print("\n Ryzen ADJI, ", RyzenADJI)
+    print("\n Static USB devices:", USBdevices)
+    print(" Total USB power: ", TotalUSBpower)
+    print("\n Totalpower: ", TotalPower)
+    print(graphics.Rever)
 
 def export():
     with open("Configuationtable.json", "r") as file:
