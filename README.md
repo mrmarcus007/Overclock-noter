@@ -12,7 +12,7 @@ pyfiglet 0.7 - Included and/or Installed
 The Pyfiglet module's are not code of my own: 
 https://pypi.org/project/pyfiglet/0.7/
 
-
+---------------------------------------------------------------------------------------------------------------------------------
 
 Deutsch:
 Dieses Programm wurde entwickelt, um Ihnen zu helfen, die Übertaktungsspezifikationen zu notieren, aber auch das Teilen zu erleichtern.
