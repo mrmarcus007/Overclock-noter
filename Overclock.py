@@ -14,6 +14,14 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
+Lang = ()
+
+def lang():
+    global Lang
+    os.system('cls')
+    print("Please select 1 of 2 languages, Bitte Wahalen sie 1 oder 2 Sprachen")
+    print("1. English \n 2. Deusche)
+    Lang = input(">")
 
 def start():
     os.system('cls')
@@ -27,7 +35,8 @@ def start():
         Menu()
     except:
         print("This is first time setup, please wait...")
-        time.sleep(5)
+        time.sleep(2)
+        time.sleep(0.5987654321)
         editor()
 
 def load():
@@ -50,24 +59,44 @@ def load():
         TotalPower = (data["TotalPower"])
 
 def Menu():
-    os.system('cls')
-    print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
-    print(" 1. View current configuration \n 2. Edit configuration \n 3. export configuration \n 4. exit program")
-    choice = input(" user: ")
-    if choice == "1":
+    if lang = 1: 
         os.system('cls')
-        configdisplay()
-        input(" Press enter to continue")
-        Menu()
-    elif choice == "2":
+        print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
+        print(" 1. View current configuration \n 2. Edit configuration \n 3. export configuration \n 4. exit program")
+        choice = input(" user: ")
+        if choice == "1":
+            os.system('cls')
+            configdisplay()
+            input(" Press enter to continue")
+            Menu()
+        elif choice == "2":
+            os.system('cls')
+            editor()
+        elif choice == "3":
+            export()
+        elif choice == "4":
+            existstage1()
+        else: 
+            Menu()
+    else:
         os.system('cls')
-        editor()
-    elif choice == "3":
-        export()
-    elif choice == "4":
-        existstage1()
-    else: 
-        Menu()
+        print("="*40, "\n", graphics.MenuD, "\n", graphics.ReverD, "\n", "="*40)
+        print(" 1. Aktuelle Konfiguration anzeigen \n 2. Konfiguration bearbeiten \n 3. Konfiguration exportieren \n 4. Programm beenden")
+        choice = input(" Benutzer: ")
+        if choice == "1":
+            os.system('cls')
+            configdisplay()
+            input(" Press enter to continue")
+            Menu()
+        elif choice == "2":
+            os.system('cls')
+            editor()
+        elif choice == "3":
+            export()
+        elif choice == "4":
+            existstage1()
+        else: 
+            Menu()
         
 def editor():
     my_system = platform.uname()
