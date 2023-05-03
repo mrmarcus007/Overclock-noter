@@ -1,6 +1,6 @@
 # Overclock-noter
 
--English-
+English:
 This program is desgined to help you keep note of overclocking specifications but also make it easy to share.
 
 To start the program please select "Overclock.py".
@@ -14,7 +14,7 @@ https://pypi.org/project/pyfiglet/0.7/
 
 
 
--Deutsch-
+Deutsch:
 Dieses Programm wurde entwickelt, um Ihnen zu helfen, die Übertaktungsspezifikationen zu notieren, aber auch das Teilen zu erleichtern.
 
 Um das Programm zu starten, wählen Sie bitte "Overclock.py".
