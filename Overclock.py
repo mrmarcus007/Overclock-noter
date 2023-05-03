@@ -29,6 +29,7 @@ def start():
     print(graphics.Rever)
     time.sleep(2)
     try:
+        print("Ladt... Loading...")
         load()
         configdisplay()
         input("press any key to go to the menu")
