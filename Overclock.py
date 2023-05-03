@@ -68,7 +68,7 @@ def Menu():
         if choice == "1":
             os.system('cls')
             configdisplay()
-            input(" Press enter to continue")
+            input(" Press any-key to continue")
             Menu()
         elif choice == "2":
             os.system('cls')
@@ -87,7 +87,7 @@ def Menu():
         if choice == "1":
             os.system('cls')
             configdisplay()
-            input(" Press enter to continue")
+            input(" Drücken Sie eine beliebige Taste, um fortzufahren")
             Menu()
         elif choice == "2":
             os.system('cls')
