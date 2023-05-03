@@ -14,7 +14,7 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
-Lang = ()
+Lang = ("1")
 
 def lang():
     global Lang
