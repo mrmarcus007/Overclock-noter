@@ -20,7 +20,7 @@ def lang():
     global Lang
     os.system('cls')
     print("Please select 1 of 2 languages, Bitte Wahalen sie 1 oder 2 Sprachen")
-    print("1. English \n 2. Deusche)
+    print("1. English \n 2. Deusche")
     Lang = input(">")
 
 def start():
@@ -57,9 +57,10 @@ def load():
         USBdevices = (data["USBdevices"])
         TotalUSBpower = (data["TotalUSBPower"])
         TotalPower = (data["TotalPower"])
+        lang = data(data["Lang"])
 
 def Menu():
-    if lang = 1: 
+    if lang == "1": 
         os.system('cls')
         print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
         print(" 1. View current configuration \n 2. Edit configuration \n 3. export configuration \n 4. exit program")
@@ -78,7 +79,7 @@ def Menu():
             existstage1()
         else: 
             Menu()
-    else:
+    elif lang == "2":
         os.system('cls')
         print("="*40, "\n", graphics.MenuD, "\n", graphics.ReverD, "\n", "="*40)
         print(" 1. Aktuelle Konfiguration anzeigen \n 2. Konfiguration bearbeiten \n 3. Konfiguration exportieren \n 4. Programm beenden")
@@ -97,6 +98,9 @@ def Menu():
             existstage1()
         else: 
             Menu()
+    else:
+        lang()
+        Menu()
         
 def editor():
     my_system = platform.uname()
@@ -129,7 +133,8 @@ def editor():
     "RyzenADJI": RyzenADJI,
     "USBdevices": USBdevices,
     "TotalUSBPower": TotalUSBpower,
-    "TotalPower": TotalPower
+    "TotalPower": TotalPower,
+    "lang": Lang,
     }
     with open("Configuationtable.json", "w") as file:
         file.write(json.dumps(data))
