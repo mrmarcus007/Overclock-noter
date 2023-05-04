@@ -14,7 +14,7 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
-Lang = ("1")
+Lang = ()
 
 def lang():
     global Lang
@@ -31,12 +31,18 @@ def start():
     try:
         print("Ladt... Loading...")
         load()
-        configdisplay()
-        input("press any key to go to the menu")
-        Menu()
+        if lang == "1":
+            configdisplay()
+            input("press enter to go to the menu")
+            Menu()
+        elif lang == "2":
+            configdisplay()
+            input("Drücken Sie die Eingabetaste, um zum Menü zu gelangen")
+            Menu()
     except:
         print("This is first time setup, please wait...")
         time.sleep(2)
+        lang()
         time.sleep(0.5987654321)
         editor()
 
@@ -104,43 +110,86 @@ def Menu():
         Menu()
         
 def editor():
-    my_system = platform.uname()
-    os.system('cls')
-    print(graphics.Warning)
-    print(" You are edting data!")
-    print("Don't use units")
-    CPUPowerLimit = float(input("CPU Power Limit (W): "))
-    CPUClock = float(input("CPU Clock (Ghz): "))
-    Gprocessor = input("GPU: ")
-    GPUpowerLimit = float(input("GPU power limit (W): "))
-    GPUClock = float(input("GPU clock (Mhz): "))
-    GPUMemoryClock = float(input("GPU memory clock (Mhz): "))
-    BusClock = float(input("Bus Clock (Mhz): "))
-    RyzenADJI = input("Ryzen ADJI preset (if you have one, if not leave blank): ")
-    USBdevices = int(input("Amount of static USB devices: " ))
-    TotalUSBpower = USBdevices * 4.5
-    TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
-    data = {
-    "PCname": my_system.node,
-    "System": f"{my_system.system} {my_system.version}",
-    "Processor": my_system.processor,
-    "CPUPowerLimit": CPUPowerLimit,
-    "CPUClock": CPUClock,
-    "BusClock": BusClock,
-    "Gprocessor": Gprocessor,
-    "GPUpowerLimit": GPUpowerLimit,
-    "GPUClock": GPUClock,
-    "GPUMemoryclock": GPUMemoryClock,
-    "RyzenADJI": RyzenADJI,
-    "USBdevices": USBdevices,
-    "TotalUSBPower": TotalUSBpower,
-    "TotalPower": TotalPower,
-    "lang": Lang,
-    }
-    with open("Configuationtable.json", "w") as file:
-        file.write(json.dumps(data))
-    load()
-    Menu()
+    if lang == "1":
+        my_system = platform.uname()
+        os.system('cls')
+        print(graphics.Warning)
+        print(" You are edting data!")
+        print("Don't use units")
+        CPUPowerLimit = float(input("CPU Power Limit (W): "))
+        CPUClock = float(input("CPU Clock (Ghz): "))
+        Gprocessor = input("GPU: ")
+        GPUpowerLimit = float(input("GPU power limit (W): "))
+        GPUClock = float(input("GPU clock (Mhz): "))
+        GPUMemoryClock = float(input("GPU memory clock (Mhz): "))
+        BusClock = float(input("Bus Clock (Mhz): "))
+        RyzenADJI = input("Ryzen ADJI preset (if you have one, if not leave blank): ")
+        USBdevices = int(input("Amount of static USB devices: " ))
+        TotalUSBpower = USBdevices * 4.5
+        TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
+        data = {
+        "PCname": my_system.node,
+        "System": f"{my_system.system} {my_system.version}",
+        "Processor": my_system.processor,
+        "CPUPowerLimit": CPUPowerLimit,
+        "CPUClock": CPUClock,
+        "BusClock": BusClock,
+        "Gprocessor": Gprocessor,
+        "GPUpowerLimit": GPUpowerLimit,
+        "GPUClock": GPUClock,
+        "GPUMemoryclock": GPUMemoryClock,
+        "RyzenADJI": RyzenADJI,
+        "USBdevices": USBdevices,
+        "TotalUSBPower": TotalUSBpower,
+        "TotalPower": TotalPower,
+        "lang": Lang,
+        }
+        with open("Configuationtable.json", "w") as file:
+            file.write(json.dumps(data))
+        load()
+        Menu()
+    if lang == "2":
+        my_system = platform.uname()
+        os.system('cls')
+        print(graphics.Warning)
+        print(" Sie bearbeiten Daten!")
+        print(" Verwenden Sie keine Einheiten")
+        CPUPowerLimit = float(input("Prozessorleistungsgrenze (W): "))
+        CPUClock = float(input("Prozessoruhr (Ghz): "))
+        Gprocessor = input("GPU: ")
+        GPUpowerLimit = float(input("GPU-Leistungsbegrenzung (W): "))
+        GPUClock = float(input("GPU-Takt (Mhz): "))
+        GPUMemoryClock = float(input("GPU-Speichertakt (Mhz): "))
+        BusClock = float(input("Busuhr (Mhz): "))
+        RyzenADJI = input("Ryzen ADJI voreingestellt (falls vorhanden, falls nicht leer lassen): ")
+        USBdevices = int(input("Anzahl statischer USB-Geräte: " ))
+        TotalUSBpower = USBdevices * 4.5
+        TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
+        data = {
+        "PCname": my_system.node,
+        "System": f"{my_system.system} {my_system.version}",
+        "Processor": my_system.processor,
+        "CPUPowerLimit": CPUPowerLimit,
+        "CPUClock": CPUClock,
+        "BusClock": BusClock,
+        "Gprocessor": Gprocessor,
+        "GPUpowerLimit": GPUpowerLimit,
+        "GPUClock": GPUClock,
+        "GPUMemoryclock": GPUMemoryClock,
+        "RyzenADJI": RyzenADJI,
+        "USBdevices": USBdevices,
+        "TotalUSBPower": TotalUSBpower,
+        "TotalPower": TotalPower,
+        "lang": Lang,
+        }
+        with open("Configuationtable.json", "w") as file:
+            file.write(json.dumps(data))
+        load()
+        Menu()
+    else:
+        error = "1"
+        funchtion = (editor)
+        errorhandler(error, funchtion)
 
 def configdisplay():
     if lang == "1":
