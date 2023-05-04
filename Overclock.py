@@ -143,59 +143,134 @@ def editor():
     Menu()
 
 def configdisplay():
-    os.system("cls")
-    print("="*5, "last Saved Configuation/System Information", "="*5, "\n")
-    print(" System: ", System)
-    print(" PC Name: ", PCname)
-    print("\n Processor: ", Processor)
-    print(" Processor Power Limit: ", CPUPowerLimit, "W")
-    print(" Processor clock: ", CPUClock, "Ghz")
-    print(" Bus clock: ", BusClock, "Mhz")
-    print("\n GPU: ", Gprocessor)
-    print(" GPU Power Limit: ", GPUpowerLimit, "W")
-    print(" GPU Clock: ", GPUClock, "Mhz")
-    print(" GPU memory clock: ", GPUMemoryClock, "Mhz")
-    print("\n Ryzen ADJI, ", RyzenADJI)
-    print("\n Static USB devices:", USBdevices)
-    print(" Total USB power: ", TotalUSBpower)
-    print("\n Totalpower: ", TotalPower)
-    print(graphics.Rever)
+    if lang == "1":
+        os.system("cls")
+        print("="*5, "last Saved Configuation/System Information", "="*5, "\n")
+        print(" System: ", System)
+        print(" PC Name: ", PCname)
+        print("\n Processor: ", Processor)
+        print(" Processor Power Limit: ", CPUPowerLimit, "W")
+        print(" Processor clock: ", CPUClock, "Ghz")
+        print(" Bus clock: ", BusClock, "Mhz")
+        print("\n GPU: ", Gprocessor)
+        print(" GPU Power Limit: ", GPUpowerLimit, "W")
+        print(" GPU Clock: ", GPUClock, "Mhz")
+        print(" GPU memory clock: ", GPUMemoryClock, "Mhz")
+        print("\n Ryzen ADJI, ", RyzenADJI)
+        print("\n Static USB devices:", USBdevices)
+        print(" Total USB power: ", TotalUSBpower)
+        print("\n Totalpower: ", TotalPower)
+        print(graphics.Rever)
+    elif lang == "2":
+        os.system("cls")
+        print("="*5, "zuletzt gespeicherte Konfigurations-/Systeminformationen", "="*5, "\n")
+        print(" System: ", System)
+        print(" PC Name: ", PCname)
+        print("\n Prozessor: ", Processor)
+        print(" Prozessorleistungsgrenze: ", CPUPowerLimit, "W")
+        print(" Prozessoruhr: ", CPUClock, "Ghz")
+        print(" Busuhr: ", BusClock, "Mhz")
+        print("\n GPU: ", Gprocessor)
+        print(" GPU-Leistungsbegrenzung: ", GPUpowerLimit, "W")
+        print(" GPU-Takt: ", GPUClock, "Mhz")
+        print(" GPU-Speichertakt: ", GPUMemoryClock, "Mhz")
+        print("\n Ryzen ADJI, ", RyzenADJI)
+        print("\n Statische USB-Geräte:", USBdevices)
+        print(" Totale USB-Leistung: ", TotalUSBpower)
+        print("\n Totale Kraft: ", TotalPower)
+        print(graphics.Rever)
+    else:
+        error = (1)
+        funchtion = (configdisplay)
+        errorhandler(error, funchtion)
 
 def export():
-    with open("Configuationtable.json", "r") as file:
-        data = json.loads(file.read())
-        with open("config_data.txt", "w") as file:
-            file.write("="*40 + " last Saved Configuation/System Information " + "="*40 + "\n")
-            file.write(" System: " + data["System"] + "\n")
-            file.write(" PC Name: " + data["PCname"] + "\n")
-            file.write("\n Processor: " + data["Processor"] + "\n")
-            file.write(" Processor Power Limit: " + data["CPUPowerLimit"] + "W" + "\n")
-            file.write(" Processor clock: " + str(data["CPUClock"]) + "Ghz" + "\n")
-            file.write(" Bus clock: " + str(data["BusClock"]) + "Mhz" + "\n")
-            file.write("\n GPU: " + data["Gprocessor"] + "\n")
-            file.write(" GPU Power Limit: " + str(data["GPUpowerLimit"]) + "W" + "\n")
-            file.write(" GPU Clock: " + str(data["GPUClock"]) + "Mhz" + "\n")
-            file.write(" GPU Memory clock: " + str(data["GPUMemoryclock"]) + "Mhz" + "\n")
-            file.write("\n Ryzen ADJI: " + data["RyzenADJI"] + "\n")
-            file.write("\n Static USB devices: " + str(data["USBdevices"]) + "\n")
-            file.write(" Total USB power: " + str(data["TotalUSBPower"]) + "W" + "\n")
-            file.write(" Total Power: " + str(data["TotalPower"]) + "W" + "\n")
-            file.write(" \n Overclock Manager, Version: 2.0.1")
-    print(" Data exported to config")
-    input(" Press enter to continue")
-    Menu()
+    if lang == "1":
+        with open("Configuationtable.json", "r") as file:
+            data = json.loads(file.read())
+            with open("config_data.txt", "w") as file:
+                file.write("="*5 + " last Saved Configuation/System Information " + "="*5 + "\n")
+                file.write(" System: " + data["System"] + "\n")
+                file.write(" PC Name: " + data["PCname"] + "\n")
+                file.write("\n Processor: " + data["Processor"] + "\n")
+                file.write(" Processor Power Limit: " + data["CPUPowerLimit"] + "W" + "\n")
+                file.write(" Processor clock: " + str(data["CPUClock"]) + "Ghz" + "\n")
+                file.write(" Bus clock: " + str(data["BusClock"]) + "Mhz" + "\n")
+                file.write("\n GPU: " + data["Gprocessor"] + "\n")
+                file.write(" GPU Power Limit: " + str(data["GPUpowerLimit"]) + "W" + "\n")
+                file.write(" GPU Clock: " + str(data["GPUClock"]) + "Mhz" + "\n")
+                file.write(" GPU Memory clock: " + str(data["GPUMemoryclock"]) + "Mhz" + "\n")
+                file.write("\n Ryzen ADJI: " + data["RyzenADJI"] + "\n")
+                file.write("\n Static USB devices: " + str(data["USBdevices"]) + "\n")
+                file.write(" Total USB power: " + str(data["TotalUSBPower"]) + "W" + "\n")
+                file.write(" Total Power: " + str(data["TotalPower"]) + "W" + "\n")
+                file.write(graphics.rever)
+        print(" Data exported to config")
+        input(" Press enter to continue")
+        Menu()
+    elif lang == "2":
+         with open("Configuationtable.json", "r") as file:
+            data = json.loads(file.read())
+            with open("config_data.txt", "w") as file:
+                file.write("="*5 + "zuletzt gespeicherte Konfigurations-/Systeminformatione" + "="* + "\n")
+                file.write(" System: " + data["System"] + "\n")
+                file.write(" PC Name: " + data["PCname"] + "\n")
+                file.write("\n Proezsor: " + data["Processor"] + "\n")
+                file.write(" Prozessorleistungsgrenze: " + data["CPUPowerLimit"] + "W" + "\n")
+                file.write(" Prozessoruhr: " + str(data["CPUClock"]) + "Ghz" + "\n")
+                file.write(" Busuhr: " + str(data["BusClock"]) + "Mhz" + "\n")
+                file.write("\n GPU: " + data["Gprocessor"] + "\n")
+                file.write(" GPU-Leistungsbegrenzung: " + str(data["GPUpowerLimit"]) + "W" + "\n")
+                file.write(" GPU-Takt: " + str(data["GPUClock"]) + "Mhz" + "\n")
+                file.write(" GPU-Speichertakt: " + str(data["GPUMemoryclock"]) + "Mhz" + "\n")
+                file.write("\n Ryzen ADJI: " + data["RyzenADJI"] + "\n")
+                file.write("\n Statische USB-Geräte: " + str(data["USBdevices"]) + "\n")
+                file.write(" Totale USB-Leistung: " + str(data["TotalUSBPower"]) + "W" + "\n")
+                file.write(" Totale Kraft: " + str(data["TotalPower"]) + "W" + "\n")
+                file.write(graphics.rever)
+            print(" Daten exportiert nach config")
+            input(" Drücken Sie die Eingabetaste, um fortzufahren")
+            Menu()
+    else:
+        error = "1"
+        funchtion = (export)
+        errorhandler(error, funchtion)
+
+def errorhandler(error, funchtion):
+    if error == "1":
+        print(" A language baised error has occured \n Ein sprachbasierter Fehler ist aufgetreten")
+        time.sleep(1.5987654321)
+        lang()
+        [funchtion]()
 
 def existstage1():
-    os.system('cls')
-    print(graphics.Warning)
-    print(" Are you sure you want to exit? Y/N")
-    b = input(" user: ")
-    if b == "Y" or b == "y":
-        exitstage2()
-    if b == "N" or b == "n":
-        Menu()
+    if lang == 1:
+        os.system('cls')
+        print(graphics.Warning)
+        print(" Are you sure you want to exit? Y/N")
+        b.higher = input(" user: ")
+        if b == "Y":
+            exitstage2()
+        if b == "N":
+            Menu()
+        else:
+            existstage1()
+    elif lang == "2":
+        os.system('cls')
+        print(graphics.Warning)
+        print(" Sie sind sicher, dass Sie beenden wollen? J/N")
+        b.higher = input(" user: ")
+        if b == "J":
+            exitstage2()
+        if b == "N":
+            Menu()
+        else:
+            existstage1()
     else:
-        existstage1()
+        error = ("1")
+        funchtion = (exsitstage1)
+        errorhandler(error, funchtion)
+
 
 def exitstage2():
     t = 10
