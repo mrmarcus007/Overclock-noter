@@ -14,14 +14,14 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
-Lang = (1)
+lang = none
 
 def lang():
-    global Lang
+    global lang
     os.system('cls')
     print("Please select 1 of 2 languages, Bitte Wahalen sie 1 oder 2 Sprachen")
     print("1. English \n2. Deusche")
-    Lang = input(">")
+    lang = input(">")
 
 def start():
     os.system('cls')
@@ -38,9 +38,6 @@ def start():
         elif lang == "2":
             configdisplay()
             input("Drücken Sie die Eingabetaste, um zum Menü zu gelangen")
-            Menu()
-        else:
-            lang()
             Menu()
     except:
         print("This is first time setup, please wait...")
@@ -66,7 +63,7 @@ def load():
         USBdevices = (data["USBdevices"])
         TotalUSBpower = (data["TotalUSBPower"])
         TotalPower = (data["TotalPower"])
-        lang = data(data["Lang"])
+        lang = data(data["lang"])
 
 def Menu():
     if lang == "1": 
@@ -144,7 +141,7 @@ def editor():
         "USBdevices": USBdevices,
         "TotalUSBPower": TotalUSBpower,
         "TotalPower": TotalPower,
-        "lang": Lang,
+        "lang": lang,
         }
         with open("Configuationtable.json", "w") as file:
             file.write(json.dumps(data))
@@ -182,7 +179,7 @@ def editor():
         "USBdevices": USBdevices,
         "TotalUSBPower": TotalUSBpower,
         "TotalPower": TotalPower,
-        "lang": Lang,
+        "lang": lang,
         }
         with open("Configuationtable.json", "w") as file:
             file.write(json.dumps(data))
