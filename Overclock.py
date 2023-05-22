@@ -14,7 +14,7 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
-lang = none
+lang = None
 
 def lang():
     global lang
@@ -46,7 +46,7 @@ def start():
         editor()
 
 def load():
-    global System, PCname, CPUPowerLimit, CPUClock, Processor, Gprocessor, GPUpowerLimit, GPUClock, GPUMemoryClock, BusClock, RyzenADJI, USBdevices, TotalUSBpower, TotalPower
+    global System, PCname, CPUPowerLimit, CPUClock, Processor, Gprocessor, GPUpowerLimit, GPUClock, GPUMemoryClock, BusClock, RyzenADJI, USBdevices, TotalUSBpower, TotalPower, lang
     with open("Configuationtable.json", "r") as file:
         data = json.loads(file.read())
         System = (data["System"])
@@ -63,11 +63,11 @@ def load():
         USBdevices = (data["USBdevices"])
         TotalUSBpower = (data["TotalUSBPower"])
         TotalPower = (data["TotalPower"])
-        lang = data(data["lang"])
+        lang = (data["lang"])
 
 def Menu():
+    os.system('cls')
     if lang == "1": 
-        os.system('cls')
         print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
         print(" 1. View current configuration \n 2. Edit configuration \n 3. export configuration \n 4. exit program")
         choice = input(" user: ")
@@ -86,8 +86,7 @@ def Menu():
         else: 
             Menu()
     elif lang == "2":
-        os.system('cls')
-        print("="*40, "\n", graphics.MenuD, "\n", graphics.ReverD, "\n", "="*40)
+        print("="*40, "\n", graphics.Menu, "\n", graphics.Rever, "\n", "="*40)
         print(" 1. Aktuelle Konfiguration anzeigen \n 2. Konfiguration bearbeiten \n 3. Konfiguration exportieren \n 4. Programm beenden")
         choice = input(" Benutzer: ")
         if choice == "1":
@@ -109,86 +108,52 @@ def Menu():
         Menu()
         
 def editor():
+    global lang
     if lang == "1":
-        my_system = platform.uname()
-        os.system('cls')
-        print(graphics.Warning)
-        print(" You are edting data!")
-        print("Don't use units")
-        CPUPowerLimit = float(input("CPU Power Limit (W): "))
-        CPUClock = float(input("CPU Clock (Ghz): "))
-        Gprocessor = input("GPU: ")
-        GPUpowerLimit = float(input("GPU power limit (W): "))
-        GPUClock = float(input("GPU clock (Mhz): "))
-        GPUMemoryClock = float(input("GPU memory clock (Mhz): "))
-        BusClock = float(input("Bus Clock (Mhz): "))
-        RyzenADJI = input("Ryzen ADJI preset (if you have one, if not leave blank): ")
-        USBdevices = int(input("Amount of static USB devices: " ))
-        TotalUSBpower = USBdevices * 4.5
-        TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
-        data = {
-        "PCname": my_system.node,
-        "System": f"{my_system.system} {my_system.version}",
-        "Processor": my_system.processor,
-        "CPUPowerLimit": CPUPowerLimit,
-        "CPUClock": CPUClock,
-        "BusClock": BusClock,
-        "Gprocessor": Gprocessor,
-        "GPUpowerLimit": GPUpowerLimit,
-        "GPUClock": GPUClock,
-        "GPUMemoryclock": GPUMemoryClock,
-        "RyzenADJI": RyzenADJI,
-        "USBdevices": USBdevices,
-        "TotalUSBPower": TotalUSBpower,
-        "TotalPower": TotalPower,
-        "lang": lang,
-        }
-        with open("Configuationtable.json", "w") as file:
-            file.write(json.dumps(data))
-        load()
-        Menu()
-    if lang == "2":
-        my_system = platform.uname()
-        os.system('cls')
-        print(graphics.Warning)
-        print(" Sie bearbeiten Daten!")
-        print(" Verwenden Sie keine Einheiten")
-        CPUPowerLimit = float(input("Prozessorleistungsgrenze (W): "))
-        CPUClock = float(input("Prozessoruhr (Ghz): "))
-        Gprocessor = input("GPU: ")
-        GPUpowerLimit = float(input("GPU-Leistungsbegrenzung (W): "))
-        GPUClock = float(input("GPU-Takt (Mhz): "))
-        GPUMemoryClock = float(input("GPU-Speichertakt (Mhz): "))
-        BusClock = float(input("Busuhr (Mhz): "))
-        RyzenADJI = input("Ryzen ADJI voreingestellt (falls vorhanden, falls nicht leer lassen): ")
-        USBdevices = int(input("Anzahl statischer USB-Geräte: " ))
-        TotalUSBpower = USBdevices * 4.5
-        TotalPower = (TotalUSBpower + GPUpowerLimit + CPUPowerLimit * 1.352)
-        data = {
-        "PCname": my_system.node,
-        "System": f"{my_system.system} {my_system.version}",
-        "Processor": my_system.processor,
-        "CPUPowerLimit": CPUPowerLimit,
-        "CPUClock": CPUClock,
-        "BusClock": BusClock,
-        "Gprocessor": Gprocessor,
-        "GPUpowerLimit": GPUpowerLimit,
-        "GPUClock": GPUClock,
-        "GPUMemoryclock": GPUMemoryClock,
-        "RyzenADJI": RyzenADJI,
-        "USBdevices": USBdevices,
-        "TotalUSBPower": TotalUSBpower,
-        "TotalPower": TotalPower,
-        "lang": lang,
-        }
-        with open("Configuationtable.json", "w") as file:
-            file.write(json.dumps(data))
-        load()
-        Menu()
+        filename = "Configuationtable.txt"
+        with open(filename, "w") as file:
+                file.write("Configuration Table\n")
+                file.write("-------------------\n")
+                file.write("PC Name: {}\n".format(data["PCname"]))
+                file.write("System: {}\n".format(data["System"]))
+                file.write("Processor: {}\n".format(data["Processor"]))
+                file.write("CPU Power Limit (W): {}\n".format(data["CPUPowerLimit"]))
+                file.write("CPU Clock (GHz): {}\n".format(data["CPUClock"]))
+                file.write("Bus Clock (MHz): {}\n".format(data["BusClock"]))
+                file.write("GPU: {}\n".format(data["Gprocessor"]))
+                file.write("GPU Power Limit (W): {}\n".format(data["GPUpowerLimit"]))
+                file.write("GPU Clock (MHz): {}\n".format(data["GPUClock"]))
+                file.write("GPU Memory Clock (MHz): {}\n".format(data["GPUMemoryclock"]))
+                file.write("Ryzen ADJI Preset: {}\n".format(data["RyzenADJI"]))
+                file.write("USB Devices: {}\n".format(data["USBdevices"]))
+                file.write("Total USB Power (W): {}\n".format(data["TotalUSBPower"]))
+                file.write("Total Power (W): {}\n".format(data["TotalPower"]))
+                print("Values exported to {}.".format(filename))
+    elif lang == "2":
+        filename = "Konfigurationstabelle.txt"
+        with open(filename, "w") as file:
+                file.write("Konfigurationstabelle\n")
+                file.write("---------------------\n")
+                file.write("PC-Name: {}\n".format(data["PCname"]))
+                file.write("System: {}\n".format(data["System"]))
+                file.write("Prozessor: {}\n".format(data["Processor"]))
+                file.write("Prozessorleistungsgrenze (W): {}\n".format(data["CPUPowerLimit"]))
+                file.write("Prozessoruhr (GHz): {}\n".format(data["CPUClock"]))
+                file.write("Busuhr (MHz): {}\n".format(data["BusClock"]))
+                file.write("GPU: {}\n".format(data["Gprocessor"]))
+                file.write("GPU-Leistungsbegrenzung (W): {}\n".format(data["GPUpowerLimit"]))
+                file.write("GPU-Takt (MHz): {}\n".format(data["GPUClock"]))
+                file.write("GPU-Speichertakt (MHz): {}\n".format(data["GPUMemoryclock"]))
+                file.write("Ryzen ADJI voreingestellt: {}\n".format(data["RyzenADJI"]))
+                file.write("Statische USB-Geräte: {}\n".format(data["USBdevices"]))
+                file.write("Gesamtleistung USB (W): {}\n".format(data["TotalUSBPower"]))
+                file.write("Gesamtleistung (W): {}\n".format(data["TotalPower"]))
+                print("Werte in {} exportiert.".format(filename))
     else:
-        error = ('1')
-        funchtion = ('4')
-        errorhandler(error, funchtion)
+        error = '1'
+        function = '4'
+        errorhandler(error, function)
+
 
 def configdisplay():
     if lang == "1":
@@ -264,7 +229,7 @@ def export():
                 file.write(" System: " + data["System"] + "\n")
                 file.write(" PC Name: " + data["PCname"] + "\n")
                 file.write("\n Proezsor: " + data["Processor"] + "\n")
-                file.write(" Prozessorleistungsgrenze: " + data["CPUPowerLimit"] + "W" + "\n")
+                file.write(" Prozessorleistungsgrenze: " + float(data["CPUPowerLimit"] + "W" + "\n"))
                 file.write(" Prozessoruhr: " + str(data["CPUClock"]) + "Ghz" + "\n")
                 file.write(" Busuhr: " + str(data["BusClock"]) + "Mhz" + "\n")
                 file.write("\n GPU: " + data["Gprocessor"] + "\n")
@@ -381,3 +346,4 @@ def exitstage2():
                 t = t - 1
 
 start()
+
