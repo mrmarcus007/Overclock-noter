@@ -1,19 +1,19 @@
 import graphics, time, os, platform, json
 
-System = ()
-PCname = ()
-CPUPowerLimit = ()
-CPUClock = ()
-Processor = ()
-Gprocessor = ()
-GPUpowerLimit = ()
-GPUClock = ()
-GPUMemoryClock = ()
-BusClock = ()
-RyzenADJI = ()
-USBdevices = ()
-TotalUSBpower = ()
-TotalPower = ()
+System = None
+PCname = None
+CPUPowerLimit = None
+CPUClock = None
+Processor = None
+Gprocessor = None
+GPUpowerLimit = None
+GPUClock = None
+GPUMemoryClock = None
+BusClock = None
+RyzenADJI = None
+USBdevices = None
+TotalUSBpower = None
+TotalPower = None
 lang = None
 
 def lang():
@@ -346,4 +346,3 @@ def exitstage2():
                 t = t - 1
 
 start()
-
