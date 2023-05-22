@@ -14,13 +14,13 @@ RyzenADJI = ()
 USBdevices = ()
 TotalUSBpower = ()
 TotalPower = ()
-Lang = ()
+Lang = (1)
 
 def lang():
     global Lang
     os.system('cls')
     print("Please select 1 of 2 languages, Bitte Wahalen sie 1 oder 2 Sprachen")
-    print("1. English \n 2. Deusche")
+    print("1. English \n2. Deusche")
     Lang = input(">")
 
 def start():
@@ -39,11 +39,13 @@ def start():
             configdisplay()
             input("Drücken Sie die Eingabetaste, um zum Menü zu gelangen")
             Menu()
+        else:
+            lang()
+            Menu()
     except:
         print("This is first time setup, please wait...")
-        time.sleep(2)
-        lang()
         time.sleep(0.5987654321)
+        lang()
         editor()
 
 def load():
@@ -187,8 +189,8 @@ def editor():
         load()
         Menu()
     else:
-        error = "1"
-        funchtion = (editor)
+        error = ('1')
+        funchtion = ('4')
         errorhandler(error, funchtion)
 
 def configdisplay():
@@ -229,8 +231,8 @@ def configdisplay():
         print("\n Totale Kraft: ", TotalPower)
         print(graphics.Rever)
     else:
-        error = (1)
-        funchtion = (configdisplay)
+        error = ('1')
+        funchtion = ('5')
         errorhandler(error, funchtion)
 
 def export():
@@ -281,16 +283,29 @@ def export():
             input(" Drücken Sie die Eingabetaste, um fortzufahren")
             Menu()
     else:
-        error = "1"
-        funchtion = (export)
+        error = ('1')
+        funchtion = ('6')
         errorhandler(error, funchtion)
 
 def errorhandler(error, funchtion):
-    if error == "1":
+     options = {
+        '1': start,
+        '2': load,
+        '3': Menu,
+        '4': editor,
+        '5': configdisplay,
+        '6': export,
+        '7': existstage1,
+        '8': existstage1,
+        '9': load,
+        '10': exit,
+    }
+     if error == "1":
         print(" A language baised error has occured \n Ein sprachbasierter Fehler ist aufgetreten")
         time.sleep(1.5987654321)
         lang()
-        [funchtion]()
+        if funchtion in options:
+            options[funchtion]()
 
 def existstage1():
     if lang == 1:
@@ -316,33 +331,56 @@ def existstage1():
         else:
             existstage1()
     else:
-        error = ("1")
-        funchtion = (exsitstage1)
+        error = ('1')
+        funchtion = ('7')
         errorhandler(error, funchtion)
 
 
 def exitstage2():
     t = 10
-    while t > 0:
-        if t >= 5:
-            os.system('cls')
-            print(graphics.Overclock)
-            print(graphics.Rever, ", By Marcus Allison" )
-            print("\n Closing program in", t)
-            time.sleep(1)
-            t = t - 1
-        elif t == 1:
-            os.system('cls')
-            print(graphics.Bye)
-            print(graphics.Rever, ", By Marcus Allison" )
-            print("\n Terminated program")
-            os._exit(1)
-        elif t <= 5:
-            os.system('cls')
-            print(graphics.Bye)
-            print(graphics.Rever, ", By Marcus Allison" )
-            print("\n Closing program in", t)
-            time.sleep(1)
-            t = t - 1
+    if lang == 1:
+        while t > 0:
+            if t >= 5:
+                os.system('cls')
+                print(graphics.Overclock)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Closing program in", t)
+                time.sleep(1)
+                t = t - 1
+            elif t == 1:
+                os.system('cls')
+                print(graphics.Bye)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Terminated program")
+                os._exit(1)
+            elif t <= 5:
+                os.system('cls')
+                print(graphics.Bye)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Closing program in", t)
+                time.sleep(1)
+                t = t - 1
+    elif lang == 2:
+        while t > 0:
+            if t >= 5:
+                os.system('cls')
+                print(graphics.Overclock)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Closing program in", t)
+                time.sleep(1)
+                t = t - 1
+            elif t == 1:
+                os.system('cls')
+                print(graphics.Bye)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Terminated program")
+                os._exit(1)
+            elif t <= 5:
+                os.system('cls')
+                print(graphics.Bye)
+                print(graphics.Rever, ", By Marcus Allison" )
+                print("\n Closing program in", t)
+                time.sleep(1)
+                t = t - 1
 
 start()
