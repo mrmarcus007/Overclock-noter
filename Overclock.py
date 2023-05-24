@@ -255,18 +255,6 @@ def export():
         errorhandler(error, funchtion)
 
 def errorhandler(error, funchtion):
-     options = {
-        '1': start,
-        '2': load,
-        '3': Menu,
-        '4': editor,
-        '5': configdisplay,
-        '6': export,
-        '7': existstage1,
-        '8': existstage1,
-        '9': load,
-        '10': exit,
-    }
      if error == "1":
         print(" A language baised error has occured \n Ein sprachbasierter Fehler ist aufgetreten")
         time.sleep(1.5987654321)
@@ -278,7 +266,7 @@ def errorhandler(error, funchtion):
             time.sleep(1.5987654321)
             funchtionhandler(funchtion)
         
-def funchtionhandler(funchtion):
+def funchtionhandler(task):
         options = {
                 '1': start,
                 '2': load,
@@ -291,8 +279,8 @@ def funchtionhandler(funchtion):
                 '9': load,
                 '10': exit,
             }
-        if funchtion in options:
-            options[funchtion]()
+        if task in options:
+            options[task]()
 
 
 def existstage1():
