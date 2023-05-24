@@ -7,7 +7,7 @@ This program is desgined to help you keep note of overclocking specifications bu
 To start the program please select "Overclock.py".
 
 REQUIRED:
-Python 3.10 interrupter
+Python 3.10 or higher interrupter
 pyfiglet 0.7 - Included and/or Installed
 
 The Pyfiglet module's are not code of my own: 
@@ -21,7 +21,7 @@ Dieses Programm wurde entwickelt, um Ihnen zu helfen, die Übertaktungsspezifika
 Um das Programm zu starten, wählen Sie bitte "Overclock.py".
 
 ERFORDERLICH:
-Python 3.10 Unterbrecher
+Python 3.10 oder höher Unterbrecher
 Pyfiglet 0.7 - Enthalten und/oder installiert
 
 Die Pyfiglet-Module sind kein eigener Code:
