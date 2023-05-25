@@ -1,20 +1,21 @@
 import graphics, time, os, platform, json
 
-System = None
-PCname = None
-CPUPowerLimit = None
-CPUClock = None
-Processor = None
-Gprocessor = None
-GPUpowerLimit = None
-GPUClock = None
-GPUMemoryClock = None
-BusClock = None
-RyzenADJI = None
-USBdevices = None
-TotalUSBpower = None
-TotalPower = None
-lang = None
+System = (None)
+PCname = (None)
+CPUPowerLimit = (None)
+CPUClock = (None)
+Processor = (None)
+Gprocessor = (None)
+GPUpowerLimit = (None)
+GPUClock = (None)
+GPUMemoryClock = (None)
+BusClock = (None)
+RyzenADJI = (None)
+USBdevices = (None)
+TotalUSBpower = (None)
+TotalPower = (None)
+lang = (None)
+
 
 def lang():
     global lang
@@ -198,63 +199,62 @@ def configdisplay():
         errorhandler(error, funchtion)
 
 def export():
-    try:
-        if lang == "1":
-            with open("Configuationtable.json", "r") as file:
-                data = json.loads(file.read())
-                with open("config_data.txt", "w") as file:
-                    file.write("="*5 + " last Saved Configuation/System Information " + "="*5 + "\n")
-                    file.write(" System: " + data["System"] + "\n")
-                    file.write(" PC Name: " + data["PCname"] + "\n")
-                    file.write("\n Processor: " + data["Processor"] + "\n")
-                    file.write(" Processor Power Limit: " + data["CPUPowerLimit"] + "W" + "\n")
-                    file.write(" Processor clock: " + str(data["CPUClock"]) + "Ghz" + "\n")
-                    file.write(" Bus clock: " + str(data["BusClock"]) + "Mhz" + "\n")
-                    file.write("\n GPU: " + data["Gprocessor"] + "\n")
-                    file.write(" GPU Power Limit: " + str(data["GPUpowerLimit"]) + "W" + "\n")
-                    file.write(" GPU Clock: " + str(data["GPUClock"]) + "Mhz" + "\n")
-                    file.write(" GPU Memory clock: " + str(data["GPUMemoryclock"]) + "Mhz" + "\n")
-                    file.write("\n Ryzen ADJI: " + data["RyzenADJI"] + "\n")
-                    file.write("\n Static USB devices: " + str(data["USBdevices"]) + "\n")
-                    file.write(" Total USB power: " + str(data["TotalUSBPower"]) + "W" + "\n")
-                    file.write(" Total Power: " + str(data["TotalPower"]) + "W" + "\n")
-                    file.write(graphics.rever)
-            print(" Data exported to config")
-            input(" Press enter to continue")
+    variables = {
+    'System': System,
+    'PCname': PCname,
+    'CPUPowerLimit': CPUPowerLimit,
+    'CPUClock': CPUClock,
+    'Processor': Processor,
+    'Gprocessor': Gprocessor,
+    'GPUpowerLimit': GPUpowerLimit,
+    'GPUClock': GPUClock,
+    'GPUMemoryClock': GPUMemoryClock,
+    'BusClock': BusClock,
+    'RyzenADJI': RyzenADJI,
+    'USBdevices': USBdevices,
+    'TotalUSBpower': TotalUSBpower,
+    'TotalPower': TotalPower,
+}
+    if lang == "1":
+        with open("Configuationtable.json", "r") as file:
+            data = json.loads(file.read())
+            with open("config_data.txt", "w") as file:
+                file.write("="*5 + " last Saved Configuation/System Information " + "="*5 + "\n")
+                for key, value in variables.items():
+                    file.write(f'{key} = {value}\n')
+
+            print("Data exported to config")
+            input("Press enter to continue")
             Menu()
-        elif lang == "2":
+    elif lang == "2":
             with open("Configuationtable.json", "r") as file:
                 data = json.loads(file.read())
                 with open("config_data.txt", "w") as file:
-                    file.write("="*5 + "zuletzt gespeicherte Konfigurations-/Systeminformatione" + "="* + "\n")
-                    file.write(" System: " + data["System"] + "\n")
-                    file.write(" PC Name: " + data["PCname"] + "\n")
-                    file.write("\n Proezsor: " + data["Processor"] + "\n")
-                    file.write(" Prozessorleistungsgrenze: " + float(data["CPUPowerLimit"] + "W" + "\n"))
-                    file.write(" Prozessoruhr: " + str(data["CPUClock"]) + "Ghz" + "\n")
-                    file.write(" Busuhr: " + str(data["BusClock"]) + "Mhz" + "\n")
-                    file.write("\n GPU: " + data["Gprocessor"] + "\n")
-                    file.write(" GPU-Leistungsbegrenzung: " + str(data["GPUpowerLimit"]) + "W" + "\n")
-                    file.write(" GPU-Takt: " + str(data["GPUClock"]) + "Mhz" + "\n")
-                    file.write(" GPU-Speichertakt: " + str(data["GPUMemoryclock"]) + "Mhz" + "\n")
-                    file.write("\n Ryzen ADJI: " + data["RyzenADJI"] + "\n")
-                    file.write("\n Statische USB-Geräte: " + str(data["USBdevices"]) + "\n")
-                    file.write(" Totale USB-Leistung: " + str(data["TotalUSBPower"]) + "W" + "\n")
-                    file.write(" Totale Kraft: " + str(data["TotalPower"]) + "W" + "\n")
-                    file.write(graphics.rever)
-                print(" Daten exportiert nach config")
-                input(" Drücken Sie die Eingabetaste, um fortzufahren")
-                Menu()
-        else:
-            error = ('1')
-            funchtion = ('6')
-            errorhandler(error, funchtion)
-    except:
-        error = 2
-        funchtion = 3
-        errorhandler(error, funchtion)
+                    for key, value in variables.items():
+                        file.write(f'{key} = {value}\n')
+                        
+            print("Daten exportiert nach config")
+            input("Drücken Sie die Eingabetaste, um fortzufahren")
+            Menu()
+    else:
+            error = '1'
+            function = '6'
+            errorhandler(error, function)
+
 
 def errorhandler(error, funchtion):
+     options = {
+        '1': start,
+        '2': load,
+        '3': Menu,
+        '4': editor,
+        '5': configdisplay,
+        '6': export,
+        '7': existstage1,
+        '8': existstage1,
+        '9': load,
+        '10': exit,
+    }
      if error == "1":
         print(" A language baised error has occured \n Ein sprachbasierter Fehler ist aufgetreten")
         time.sleep(1.5987654321)
@@ -266,7 +266,7 @@ def errorhandler(error, funchtion):
             time.sleep(1.5987654321)
             funchtionhandler(funchtion)
         
-def funchtionhandler(task):
+def funchtionhandler(funchtion):
         options = {
                 '1': start,
                 '2': load,
@@ -279,8 +279,8 @@ def funchtionhandler(task):
                 '9': load,
                 '10': exit,
             }
-        if task in options:
-            options[task]()
+        if funchtion in options:
+            options[funchtion]()
 
 
 def existstage1():
